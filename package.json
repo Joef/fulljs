@@ -5,8 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev-server": "nodemon --exec babel-node src/server/server.js --ignore dist/",
-    "dev-bundle": "webpack -w -d"
+    "dev-wp-server": "nodemon --exec babel-node src/server/server.js --ignore dist/",
+    "dev-wp-bundle": "webpack -w -d",
+    "dev-wp": "npm-run-all --parallel dev-wp-server dev-wp-bundle",
+    "dev-ru-build": "rollup -c",
+    "dev-ru-watch": "rollup -c -w",
+    "dev-ru-start": "serve public",
+    "dev-ru": "npm-run-all --parallel dev-ru-start dev-ru-watch",
+    "release": "standard-version -r",
+    "release-rc": "standard-version -p"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +24,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "babel-loader": "^8.1.0",
+    "date-fns": "^1.30.1",
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -24,6 +32,8 @@
     "webpack-cli": "^3.3.11"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.3.0",
     "eslint": "^6.8.0",
@@ -33,7 +43,14 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "jest": "^25.3.0",
     "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.0.4",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "rollup": "^1.16.2",
+    "rollup-plugin-terser": "^5.0.0",
+    "serve": "^11.0.2",
+    "standard-version": "^7.1.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.8.3"
   }
 }
